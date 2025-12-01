@@ -1338,6 +1338,171 @@ card_mod:
 </details>
 
 <details>
+<summary><strong>9 - Sprinkler (icon in corner version)</strong></summary>
+
+```yaml
+type: custom:mushroom-entity-card
+entity: switch.plug_6_local
+tap_action:
+  action: toggle
+icon: mdi:sprinkler-variant
+icon_color: blue
+name: Sprinkler
+card_mod:
+  style:
+    mushroom-shape-icon$: |
+      .shape {
+        {# ========== USER CONFIG ========== #}
+        {# true = number mode, false = state mode #}
+        {% set use_number      = false %}
+
+        {# STATE MODE SETTINGS #}
+        {% set state_entity    = 'switch.plug_6_local' %}
+        {% set active_value    = 'on' %}
+
+        {# OPTIONAL: NUMBER MODE SETTINGS #}
+        {% set number_entity   = 'sensor.plug_power' %}
+        
+        {# '>' '<' '=' '>=' '<=' #}
+        {% set number_operator = '>' %}
+        
+        {% set threshold       = 0.0 %}
+        {# ========== END USER CONFIG ====== #}
+
+        {# ======== TRIGGER DECISION LOGIC ======== #}
+        {% if use_number %}
+          {% set num = states(number_entity) | float(0) %}
+          {% if number_operator == '>' %}
+            {% set trigger_active = (num > threshold) %}
+          {% elif number_operator == '<' %}
+            {% set trigger_active = (num < threshold) %}
+          {% elif number_operator == '=' %}
+            {% set trigger_active = (num == threshold) %}
+          {% elif number_operator == '>=' %}
+            {% set trigger_active = (num >= threshold) %}
+          {% elif number_operator == '<=' %}
+            {% set trigger_active = (num <= threshold) %}
+          {% else %}
+            {% set trigger_active = false %}
+          {% endif %}
+        {% else %}
+          {% set trigger_active = (states(state_entity) == active_value) %}
+        {% endif %}
+        {# =========== END TRIGGER LOGIC =========== #}
+
+        {% if trigger_active %}
+          --shape-animation: irrig-ultra 2s ease-in-out infinite;
+          --irrig-heads-animation: irrig-heads 1.6s ease-out infinite;
+          --irrig-fog-animation: irrig-fog 2s ease-in-out infinite;
+          opacity: 1;
+        {% else %}
+          --shape-animation: none;
+          --irrig-heads-animation: none;
+          --irrig-fog-animation: none;
+          opacity: 0.75;
+        {% endif %}
+
+        position: relative;
+      }
+
+      .shape::before,
+      .shape::after {
+        content: '';
+        position: absolute;
+        border-radius: inherit;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .shape::before {
+        animation: var(--irrig-heads-animation);
+      }
+
+      .shape::after {
+        animation: var(--irrig-fog-animation);
+      }
+
+      @keyframes irrig-ultra {
+        0%   { transform: translateY(0) scale(1); }
+        25%  { transform: translateY(-2px) scale(1.02); }
+        50%  { transform: translateY(-4px) scale(1.03); }
+        75%  { transform: translateY(-2px) scale(1.02); }
+        100% { transform: translateY(0) scale(1); }
+      }
+
+      @keyframes irrig-idle {
+        0%   { transform: translateY(1px); }
+        50%  { transform: translateY(-1px); }
+        100% { transform: translateY(1px); }
+      }
+
+      @keyframes irrig-heads {
+        0% {
+          box-shadow:
+            -10px 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0),
+            0 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0),
+            10px 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0);
+        }
+        20% {
+          box-shadow:
+            -10px 4px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.9),
+            0 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0),
+            10px 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0);
+        }
+        40% {
+          box-shadow:
+            -10px -2px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.4),
+            0 4px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.9),
+            10px 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0);
+        }
+        60% {
+          box-shadow:
+            -10px -8px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.1),
+            0 -2px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.4),
+            10px 4px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.9);
+        }
+        80% {
+          box-shadow:
+            -10px -12px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.0),
+            0 -8px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.1),
+            10px -2px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0.4);
+        }
+        100% {
+          box-shadow:
+            -10px 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0),
+            0 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0),
+            10px 10px 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0);
+        }
+      }
+
+      @keyframes irrig-fog {
+        0% {
+          filter: blur(0);
+        }
+        50% {
+          filter: blur(0.7px);
+          box-shadow: 0 -14px 18px -8px rgba(var(--rgb-{{ config.icon_color }}), 0.45);
+        }
+        100% {
+          filter: blur(0);
+          box-shadow: 0 0 0 0 rgba(var(--rgb-{{ config.icon_color }}), 0);
+        }
+      }
+    .: |
+      mushroom-shape-icon {
+        --icon-size: 65px;
+        display: flex;
+        margin: -17px 0 10px -17px !important;
+        padding-right: 10px;
+      }
+      ha-card {
+        clip-path: inset(0 0 0 0 round var(--ha-card-border-radius, 12px));
+      }
+
+```
+</details>
+
+<details>
 <summary><strong>10 - Heater</strong></summary>
 
 ```yaml
