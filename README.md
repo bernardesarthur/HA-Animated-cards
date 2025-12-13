@@ -27,7 +27,7 @@ explains how to do it.
 
 ## Batch 1:
 ![ezgif-8e9c11636a22c613](https://github.com/user-attachments/assets/4f5a1af0-d89b-4ed9-9c8c-36e678045580)
-`Loading image... please wait`
+`Loading images... please wait`
 
 ## Batch 2:
 ![522590522-55a39df8-b28b-427b-8ec2-73221f6d154b](https://github.com/user-attachments/assets/65ba4a4e-bed4-4ee1-8735-03e2bfd67db6)
