@@ -17,7 +17,7 @@
 
 # Home Assistant Animated Dishwasher / Washing Machine Cards
 
-This [YouTube Video](https://youtu.be/6WztFsMf3fg) explains how to do it.
+This [YouTube Video](https://youtu.be/6NM60DEdScA) explains how to do it.
 
 ![531304226-d16dce5f-74d0-4013-8258-ffba7a2a6bfb](https://github.com/user-attachments/assets/3304b727-c65d-4e48-8903-86360ed2e83a)
 
