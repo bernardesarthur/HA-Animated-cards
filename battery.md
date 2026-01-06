@@ -82,7 +82,7 @@ card_mod:
         --custom-icon-shadow: {{ '0 0 15px rgba(' ~ color ~ ', 0.6)' if is_charging else 'none' }};
         
         /* Text Color */
-        --text-color: {{ 'rgba(' ~ color ~ ', 1)' if level < 100 else 'rgba(255,255,255,0.7)' }};
+        --text-color: {{ 'rgba(' ~ color ~ ', 1)' if level < 101 else 'rgba(255,255,255,0.7)' }};
 
         /* --- CARD STYLING --- */
         background: #1c1c1c !important;
