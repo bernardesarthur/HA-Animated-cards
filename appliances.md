@@ -27,7 +27,7 @@
 
 This [YouTube Video](https://youtu.be/6NM60DEdScA) explains how to do it.
 
-![531304226-d16dce5f-74d0-4013-8258-ffba7a2a6bfb](https://github.com/user-attachments/assets/3304b727-c65d-4e48-8903-86360ed2e83a)
+![dish-washer2](https://github.com/user-attachments/assets/8057e695-ab72-47ca-9630-987cc7bf8e2d)
 
 <hr>
 
