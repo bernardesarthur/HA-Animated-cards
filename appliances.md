@@ -29,6 +29,8 @@ This [YouTube Video](https://youtu.be/6NM60DEdScA) explains how to do it.
 
 ![dish-washer2](https://github.com/user-attachments/assets/8057e695-ab72-47ca-9630-987cc7bf8e2d)
 
+ `Loading images... please wait`
+
 <hr>
 
 # Cards:
